@@ -44,7 +44,8 @@ module.exports = ["modern", "false"].map(browserType => ({
                         ie: 11
                       }
               }
-            ]
+            ],
+            "@babel/preset-react"
           ],
           plugins: ["@babel/plugin-proposal-class-properties"]
         }
