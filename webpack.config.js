@@ -22,6 +22,10 @@ module.exports = ["modern", "false"].map(browserType => ({
   optimization: {
     runtimeChunk: {
       name: "runtime"
+    },
+    splitChunks: {
+      chunks: "all",
+      minSize: 7e3 // 7kb is smaller than Reacts size which is 7.7kb (ungzipped)
     }
   },
   module: {
