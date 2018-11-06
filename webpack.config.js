@@ -1,13 +1,17 @@
 const path = require("path");
+const fs = require("fs");
 
 process.env.NODE_ENV = "production";
 
 module.exports = ["modern", "false"].map(browserType => ({
   mode: process.env.NODE_ENV,
-  entry: ["index"].reduce(
-    (entries, entryName) => ({
+  entry: fs.readdirSync("./src").reduce(
+    (entries, fileName) => ({
       ...entries,
-      [entryName]: path.resolve(__dirname, `src/${entryName}.js`)
+      [fileName.replace(/\.js$/, "")]: path.resolve(
+        __dirname,
+        `src/${fileName}`
+      )
     }),
     {}
   ),
